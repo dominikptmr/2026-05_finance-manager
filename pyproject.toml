@@ -1,0 +1,5 @@
+[project]
+name = "finance-manager"
+
+[project.scripts]
+finance-manager = "finance_manager.main:main"
