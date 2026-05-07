@@ -1,11 +1,24 @@
-import csv
+import csv, json
 from pathlib import Path
 
 from models import Transaction
 
+storage_path = Path('finance-manager/data/transactions.json')
+imports_dir_path = Path('finance-manager/data/imports')
 
-def extract_transactions_from_csv_file(path):
-    with open(path, mode='r', newline='') as file:
+
+def get_csv_files_to_import():
+    csv_file_paths = []
+    
+    for file in imports_dir_path.iterdir():
+        if file.suffix == '.csv':
+            csv_file_paths.append(str(file))
+    
+    return csv_file_paths
+
+
+def extract_transactions_from_csv_file(csv_file_path):
+    with open(csv_file_path, mode='r', newline='') as file:
         csv_file = csv.DictReader(file)
 
         transactions = []
@@ -21,3 +34,4 @@ def extract_transactions_from_csv_file(path):
             transactions.append(transaction)
 
     return transactions
+
