@@ -70,6 +70,15 @@ class Transaction:
     
     def is_spending(self):
         return self.amount < 0
+    
+    def to_dict(self):
+        return {
+            "date": self._date,
+            "amount": self._amount,
+            "description": self._description,
+            "merchant": self._merchant,
+            "cathegories": self._cathegories
+        }
 
 
 class Cathegory:

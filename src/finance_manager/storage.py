@@ -1,2 +1,0 @@
-from csv_import import extract_transactions_from_csv_file
-
