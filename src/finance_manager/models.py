@@ -1,3 +1,4 @@
+
 class Transaction:    
     id_counter = 0
 
@@ -6,7 +7,7 @@ class Transaction:
         self._amount = amount # transaction amount in EUR
         self._description = description # trasaction description
         self._merchant = merchant # transaction merchant
-        self._cathegories = [] # list of cathegories that are applied to the transaction
+        self._categories = [] # list of categories that are applied to the transaction
 
         Transaction.id_counter += 1
         self._id = Transaction.id_counter
@@ -50,44 +51,45 @@ class Transaction:
     def get_merchant(self):
         return self._merchant
     
-    def apply_cathegory(self, cathegory):
-        if cathegory not in self.cathegories:
-            self.cathegories.append(cathegory)
+    def apply_category(self, category):
+        if category not in self._categories:
+            self._categories.append(category)
         else:
-            print('Could not add cathegory: Cathegory is already applied to transaction')
+            print('Could not add category: category is already applied to transaction')
     
-    def remove_cathegory(self, cathegory):
-        if cathegory in self.cathegories:
-            self.cathegories.remove(cathegory)
+    def remove_category(self, category):
+        if category in self._categories:
+            self._categories.remove(category)
         else:
-            print('Could not remove cathegory: Cathegory is not applied to transaction')
+            print('Could not remove category: category is not applied to transaction')
     
     def get_id(self):
         return self._id
     
     def is_earning(self):
-        return self.amount >= 0
+        return self._amount >= 0
     
     def is_spending(self):
-        return self.amount < 0
+        return self._amount < 0
     
     def to_dict(self):
         return {
+            "id": self._id,
             "date": self._date,
             "amount": self._amount,
             "description": self._description,
             "merchant": self._merchant,
-            "cathegories": self._cathegories
+            "categories": self._categories
         }
 
 
-class Cathegory:
+class Category:
     def __init__(self, name):
         self.name = name
 
 
-class CathegorizationRule:
-    def __init__(self, target, value, cathegory):       
+class CategorizationRule:
+    def __init__(self, target, value, category):       
         self.target = target # database column the rule targets (description or merchant)
         self.value = value # value the target item needs to contain, in oder for the rule to apply
-        self.cathegory = cathegory # cathegory that is applied to the transaction if the rule applies
+        self.category = category # category that is applied to the transaction if the rule applies

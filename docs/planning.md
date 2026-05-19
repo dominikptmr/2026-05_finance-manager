@@ -15,9 +15,9 @@ finance-manager/
         ├── main.py
         ├── models.py           # classes
         ├── csv_import.py       # read csv files
-        ├── storage.py          # read and write transactions to/from transactions.json, edit transaction cathegories
+        ├── storage.py          # read and write transactions to/from transactions.json, edit transaction categories
         ├── categorization.py   # categorize transactions
-        ├── statistics.py       # calculate statistics from transactions and cathegories
+        ├── statistics.py       # calculate statistics from transactions and categories
         └── cli.py              # runs cli
 
 
