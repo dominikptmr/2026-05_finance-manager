@@ -24,7 +24,7 @@ def extract_transactions_from_csv_files(csv_file_paths):
 
             for line in csv_file:
                 transaction = Transaction(
-                    date = line['date'],
+                    transaction_date = line['date'],
                     amount = float(line['amount']),
                     description = line['description'],
                     merchant = line['merchant']

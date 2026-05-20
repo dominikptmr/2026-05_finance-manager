@@ -31,7 +31,7 @@ finance-manager/
 
 ## 1. Migarate from json to db
 
-### 1.1 Initialite SQLite database
+### 1.1 Initialize SQLite database
 1. Check for `finance_manager.db` and create if missing
 2. Set up if does not exist (run `sql/setup.sql`)
 3. Create tables if missing
